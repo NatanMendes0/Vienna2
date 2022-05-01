@@ -2,8 +2,8 @@
   //PERGUNTAR PRO SOR SE TEMOS QUE CRIAR FUNÇÕES COM ESSES CÓDIGOS PHP
 
   // func (nativa): vincula o arquivo com outro arquivo
-  include ('../includes/banco.php'); // login.php >> banco.php >> Vienna2 (DB)
-
+  include ('../funcoes/banco.php'); // login.php >> banco.php >> Vienna2 (DB)
+  
   // cond ({func (nativa): verifica o email} || {func (nativa): verifica a senha}):
     // executa as condicionais posteriores
   if ( isset ( $_POST['email'] ) || isset ( $_POST['senha'] ) ) {
@@ -27,6 +27,8 @@
         $email = $mysqli -> real_escape_string ( $_POST['email'] );
         // var $senha: func (nativa): remove cache da senha no navegador
         $senha = $mysqli -> real_escape_string ( $_POST['senha'] );
+        // var $nome: func (nativa): remove cache do nome no navegador
+        $nome = $mysqli -> real_escape_string ( $_POST['nome'] );
         
         // var $sql_code: verifica se existe o email e a senha no banco
         $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$senha'";
@@ -54,6 +56,7 @@
           
           //cria sessão com id e email do usuario
           $_SESSION['id'] = $usuario['id'];
+          $_SESSION['nome'] = $usuario['nome'];
           $_SESSION['email'] = $usuario['email'];
 
           //redirecionamento para pagina home
