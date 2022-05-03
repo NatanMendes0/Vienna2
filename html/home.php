@@ -41,8 +41,8 @@
         ?>
     </header>
     <hr>
-    <h1 class="text-center">DESTAQUES</h1>
-    <main>
+    <main class="container">
+        <h1 class="text-center">DESTAQUES</h1>
         <div style="flex-direction: column">
             <div><h2>{{ Misoto One }}</h2></div>
             <div><img src="{{ Imagem Produto }}" alt=""></div>
