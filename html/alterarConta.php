@@ -9,6 +9,7 @@
     
     //variaveis
     $email = $_POST['email'];
+    $id = "";
     $nome_novo = "";
     $email_novo = "";
     $senha_novo = "";
@@ -18,6 +19,7 @@
     $consulta = mysqli_query($conexao,$sql);
 
     while($dados = mysqli_fetch_array($consulta)){
+        $id = $dados['id'];
         $nome_novo = $dados['nome'];
         $email_novo = $dados['email'];
         $senha_novo = $dados['senha'];
@@ -36,22 +38,23 @@
     <h2>Gerenciamento de conta:</h2>
     <hr>
     <div class="text-center">
-        <form action="../php/rotinas/altera.php" method="POST">
+        <form action="../php/rotinas/altera.php" method="POST"> 
             <p>
                 <label>Digite um novo nome (ou deixe o mesmo para mantê-lo):</label>  
-                <input type="text" name="nome" value="<?php echo $nome_novo; ?>">
+                <input type="text" name="nome" required value="<?php echo $nome_novo; ?>">
             </p>
             <p>
                 <label>Digite um novo E-mail (ou deixe o mesmo para mantê-lo):</label>
-                <input type="email" name="email" value="<?php echo $email_novo; ?>">
+                <input type="email" name="email" required value="<?php echo $email_novo; ?>">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
             </p>
             <p>
-                <label>Digite uma nova senha (ou deixe a mesma para mantê-la): </label>
-                <input type="password" name="senha" value="<?php echo $senha_novo; ?>">
+                <label>Digite uma nova senha (ou digite a mesma para mantê-la): </label>
+                <input type="password" name="senha" required value="">
             </p>
             <p>
-                <label>Confirme a nova senha (ou deixe a mesma para mantê-la): </label>
-                <input type="password" name="confSenha" value="<?php echo $senha_novo; ?>">
+                <label>Confirme a nova senha (ou digite a mesma para mantê-la): </label>
+                <input type="password" name="confSenha" required value="">
             </p>
             <p>
                 <input type="submit" class="btn btn-primary" value="Enviar">
