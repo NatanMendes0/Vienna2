@@ -21,7 +21,7 @@
                 "<h2> Bem-vindo(a), " . $_SESSION['nome'] . "! </h2>";
                 echo 
                 "<div>
-                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciamento de conta</button></a>
+                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciamento<br>de conta</button></a>
                     <a href='../php/rotinas/logout.php'><button class='btn btn-secondary'>Logout</button></a>
                 </div>";
             } else {
@@ -62,7 +62,7 @@
                 <div class="text-center" style="flex-direction: column">
                     <div><h2>Misoto TV</h2></div>
                     <div><img src="https://docs.google.com/uc?id=1T2EAp8f_bw1d6EGx8FvLP9OiBli83Caf"></div>
-                    <div><h2>R$ 999</h2></div>
+                    <div><h2>R$ 199,90</h2></div>
                 </div>
             </a>
         </div>

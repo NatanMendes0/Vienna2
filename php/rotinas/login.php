@@ -1,6 +1,7 @@
 <?php
   // func (nativa): vincula o arquivo com outro arquivo
   require_once('../funcoes/banco.php');
+  require_once('../funcoes/usuarios.php');
 
   //  variaveis
   $email = $_POST['email'];
@@ -23,28 +24,25 @@
     }
 
     // cond: caso todos os campos estejam preenchidos, o código procede
-    else {   
+    else {
 
       // var $usuario: func (nativa): remove cache da senha no navegador
       $email = $mysqli->real_escape_string($_POST['email']);
 
-      $senha = $_POST['senha'];
+      //codifica a senha
       $hash_senha = hash("sha256", $senha, false);
 
-      // var $sql_code: verifica se existe o email e a senha no banco
-      $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$hash_senha'";
-
-      // nota: verificar se precisamos criar uma func que seleciona os campos no nosso banco de dados
+      // $usuarios: verifica se existe o email e a senha no banco
+      $consulta = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$hash_senha'";
 
       // var $sql_query: query retorna o resultado, com apenas uma linha
-      $sql_query = $mysqli->query($sql_code)
+      $sql_query = $mysqli->query($consulta)
         or die("Falha na execução do código SQL: " . $mysqli->error);
 
       //quantidade recebe o numero de linhas que $sql_query recebeu (se recebeu)
       $quantidade = $sql_query->num_rows;
 
       // cond (caso o nº de linhas da query for 1 (query: var $quantidade)): 
-      // cria sessão se o usuário existir no banco
       if ($quantidade == 1) {
 
         // var $usuario: recebe VALORES dos campos do usuario (id, nome, email, senha)
@@ -55,7 +53,7 @@
           session_start(); //tempo de sessão = 180min (3H)            
         }
 
-        //cria sessão com id e email do usuario
+        //cria sessão com id, email e nome do usuario
         $_SESSION['id'] = $usuario['id'];
         $_SESSION['nome'] = $usuario['nome'];
         $_SESSION['email'] = $usuario['email'];

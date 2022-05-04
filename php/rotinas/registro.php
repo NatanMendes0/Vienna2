@@ -17,18 +17,6 @@
 
         global $mysqli;
 
-        //faz uma criptografia da senha
-        //$hash_senha = hash("sha256", $senha, false);
-
-        // //insersão de valores no banco de dados 
-        // try {
-        //     $sql = "INSERT INTO `usuarios` (`nome`, `email`, `senha`) VALUES ('$nome','$email','$hash_senha')"; //insere a senha ja codificada no campo senha
-        //     $result = $mysqli->query($sql);
-        // } catch (mysqli_sql_exception $e) {
-        //     //mostra mensagem de erro       
-        //     die("Ocorreu um erro na inclusão do usuário. ({$e->getMessage()})");
-        // }
-
-        $usuario = banco_insert_usuario($nome, $cpf, $email, $senha);
+        $usuario = banco_insert_usuario($nome, $email, $senha);
     }
 ?>
