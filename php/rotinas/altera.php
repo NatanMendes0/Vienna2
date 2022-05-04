@@ -10,9 +10,7 @@
         $id = $_POST['id'];
         $nome_novo = $_POST['nome'];
         $email_novo = $_POST['email'];
-        $senha_novo = $_POST['senha'];
-
-        
+        $senha_novo = $_POST['senha'];        
         
         try{
             $sql = "UPDATE `usuarios` SET  `nome`='$nome_novo', `email`='$email_novo', `senha`='$hash_senha' WHERE `id`='$id'";
