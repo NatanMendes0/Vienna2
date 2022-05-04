@@ -12,7 +12,7 @@
         $email_novo = $_POST['email'];
         $senha_novo = $_POST['senha'];
 
-        $hash_senha = hash("sha256", $senha_novo, false);
+        
         
         try{
             $sql = "UPDATE `usuarios` SET  `nome`='$nome_novo', `email`='$email_novo', `senha`='$hash_senha' WHERE `id`='$id'";
