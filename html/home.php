@@ -38,7 +38,7 @@
     </header>
     <hr>
     <main class="container">
-        <h1 class="text-center">DESTAQUES</h1>
+        <h1 class="text-center">PRODUTOS</h1>
         <div class="d-flex justify-content-between">
             <div>
                 <a href="../html/produtos/misotoOne.php" style="text-decoration: none;">
