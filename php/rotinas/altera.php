@@ -26,7 +26,7 @@
             $sql = "UPDATE `usuarios` SET  `nome`='$nome_novo', `email`='$email_novo', `senha`='$hash_senha' WHERE `id`='$id'";
             $executa= mysqli_query($conexao,$sql);
         } catch (mysqli_sql_exception $e){
-            die("Ocorreu um erro na atualização do usuário. ({$e->getMessage()})");
+            die("Ocorreu um erro na atualização do usuário! ({$e->getMessage()})");
         }        
 
         if($executa)
