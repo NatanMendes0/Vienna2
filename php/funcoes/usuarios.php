@@ -10,8 +10,7 @@
         try {
             $sql = "INSERT INTO `usuarios` (`nome`, `email`, `senha`) VALUES ('$nome','$email','$hash_senha')"; //insere a senha ja codificada no campo senha
             $result = $mysqli->query($sql);
-        } catch (mysqli_sql_exception $e) {
-            //mostra mensagem de erro       
+        } catch (mysqli_sql_exception $e) {     
             die("Ocorreu um erro na inclusão do usuário. ({$e->getMessage()})");
         }
         

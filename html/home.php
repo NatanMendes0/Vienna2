@@ -21,7 +21,7 @@
                 "<h2> Bem-vindo(a), " . $_SESSION['nome'] . "! </h2>";
                 echo 
                 "<div>
-                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciamento<br>de conta</button></a>
+                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciamento<br>de Conta</button></a>
                     <a href='../php/rotinas/logout.php'><button class='btn btn-secondary'>Logout</button></a>
                 </div>";
             } else {

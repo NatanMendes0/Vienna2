@@ -59,7 +59,13 @@
             <p>
                 <input type="submit" class="btn btn-primary" value="Enviar">
             </p>
+            <br><br>
+            <p>
+                <button name="deletar" class="btn btn-secondary">Deletar Conta</button>
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+            </p>
         </form>
+        
     </div>
 </body>
 </html>

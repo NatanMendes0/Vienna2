@@ -1,9 +1,17 @@
 <?php
-    $conexao = mysqli_connect("localhost", "root", "", "Vienna2"); 
+    $conexao = mysqli_connect("localhost", "root", "", "Vienna2");
 
     //revive a sessao do usuario
     if(!isset($_SESSION)){
         session_start();
+    }
+
+    if(isset($_POST['deletar'])){
+        $id = $_POST['id'];
+        $sql = "DELETE FROM `usuarios` WHERE `usuarios`.`id`= '$id'";
+        $executa= mysqli_query($conexao,$sql);
+        unset($_POST['deletar']);
+        header("location: ../../html/home.php");
     }
 
     if(isset($_POST["nome"]) && isset($_POST["email"]) && isset($_POST["senha"]) && isset($_POST["confSenha"]) && $_POST["senha"] == $_POST["confSenha"]){
@@ -24,10 +32,7 @@
         if($executa)
 		{
 			session_destroy();
-            echo "<div style='color:#F00'> Sucesso ao atualizar</div><br/><br/>";
             header("location: ../../html/home.php");
-		}else{
-			echo "<div style='color:#F00'> Erro ao atualizar</div><br/><br/>";
 		}
     }
 ?>
