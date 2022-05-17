@@ -41,7 +41,7 @@
         <form action="../php/rotinas/altera.php" method="POST"> 
             <p>
                 <label>Digite um novo nome (ou deixe o mesmo para mantê-lo):</label>  
-                <input type="text" name="nome" required value="<?php echo $nome_novo; ?>">
+                <input type="text" name="nome"  >
             </p>
             <p>
                 <label>Digite um novo E-mail (ou deixe o mesmo para mantê-lo):</label>

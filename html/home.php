@@ -3,6 +3,24 @@
     if(!isset($_SESSION)){
         session_start();
     }
+
+    function card_produto($nome,$idCategoria,$preco){
+        
+        $figura = array();
+        $figura[1] = "https://docs.google.com/uc?id=1j3BPkyLcj66iFnFNqPON1GvegICXpmMv";
+        $figura[2] = "https://docs.google.com/uc?id=1T2EAp8f_bw1d6EGx8FvLP9OiBli83Caf";
+        $link = $figura[$idCategoria];
+        $html= "";
+        $html.= "
+            <div class='text-center d-flex flex-column'>
+                <div><h2>$nome</h2></div>
+                <div><img src='$link'></div>
+                <div><h2>R$ $preco,90</h2></div>
+            </div>
+        ";
+        return $html;
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,14 +32,15 @@
     <title>Vienna - Home</title>
   </head>
   <body>
-    <header style="display: flex; flex-direction: row; justify-content: space-between; margin: 1%;">
+    <header class="d-flex flex-row justify-content-between" style="margin: 1%;">
         <?php
             if ( isset ($_SESSION['nome']) ) { 
                 echo 
                 "<h2> Bem-vindo(a), " . $_SESSION['nome'] . "! </h2>";
                 echo 
                 "<div>
-                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciamento<br>de Conta</button></a>
+                    <a href='produtosHome.php'><button class='btn btn-success'>Produtos</button></a>
+                    <a href='gerenciamento.php'><button class='btn btn-primary'>Gerenciar Conta</button></a>
                     <a href='../php/rotinas/logout.php'><button class='btn btn-secondary'>Logout</button></a>
                 </div>";
             } else {
@@ -40,31 +59,25 @@
     <main class="container">
         <h1 class="text-center">PRODUTOS</h1>
         <div class="d-flex justify-content-between">
-            <div>
-                <a href="../html/produtos/misotoOne.php" style="text-decoration: none;">
-                    <div class="text-center" style="flex-direction: column">
-                        <div><h2>Misoto One</h2></div>
-                        <div><img src="https://docs.google.com/uc?id=1j3BPkyLcj66iFnFNqPON1GvegICXpmMv"></div>
-                        <div><h2>R$ 999,90</h2></div>
-                    </div>
-                </a>
-            </div>
-            <div>
-                <a href="../html/produtos/misotoX.php" style="text-decoration: none;">
-                    <div class="text-center" style="flex-direction: column">
-                        <div><h2>Misoto X</h2></div>
-                        <div><img src="https://docs.google.com/uc?id=13CmGQCaUfOet0UDStdI66kb5uw4LE_K1"></div>
-                        <div><h2>R$ 2999,90</h2></div>
-                    </div>
-                </a>
-            </div>
-            <a href="../html/produtos/misotoTv.php" style="text-decoration: none;">
-                <div class="text-center" style="flex-direction: column">
-                    <div><h2>Misoto TV</h2></div>
-                    <div><img src="https://docs.google.com/uc?id=1T2EAp8f_bw1d6EGx8FvLP9OiBli83Caf"></div>
-                    <div><h2>R$ 199,90</h2></div>
-                </div>
-            </a>
+            <?php
+                $conexao = mysqli_connect("localhost", "root", "", "Vienna2");
+
+                $sql = "SELECT * FROM `produtos`";
+                $consulta = mysqli_query($conexao, $sql);
+        
+                while($dados = mysqli_fetch_array($consulta)){
+
+                    $nome = $dados['nome'];
+                    $idCategoria = $dados['categoria'];
+                    $preco = $dados['preço'];
+                    
+                    echo card_produto($nome, $idCategoria, $preco);
+
+                }
+
+                
+            ?>
+            
         </div>
     </main>
   </body>

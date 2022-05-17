@@ -15,6 +15,7 @@
         }
         
         header("location: ../../html/home.php");
+        
         return $result;
     }
 ?>
